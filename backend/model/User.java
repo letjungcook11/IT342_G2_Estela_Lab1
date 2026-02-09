@@ -1,4 +1,4 @@
-package IT342_G2_Estela_LAB1;
+package com.it342.backend.model;
 
 import org.springframework.boot.convert.DataSizeUnit;
 
@@ -7,7 +7,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -23,6 +24,7 @@ public class User{
     @Column (nullable = false)
     private String username;
 
+    @JsonIgnore
     @Column (nullable = false)
     private String password;
 

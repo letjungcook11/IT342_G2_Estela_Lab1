@@ -1,0 +1,8 @@
+02/09/2026
+
+✔ - Simple Backend Implementation
+✔ - Simple React UI Implementation
+✔ - Login Function
+x - Registration Function
+x - Dashboard Function
+x - Logout Function

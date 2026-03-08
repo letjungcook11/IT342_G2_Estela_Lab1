@@ -1,7 +1,7 @@
-package com.it342.backend.security;
-
+package com.it342.backend.config;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
+import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.*;

@@ -1,10 +1,11 @@
-package IT342_G2_Estela_Lab1;
+package com.it342.backend.service;
 
 import com.it342.backend.model.User;
 import com.it342.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

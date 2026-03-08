@@ -1,8 +1,7 @@
 package com.it342.backend.model;
 
-import org.springframework.boot.convert.DataSizeUnit;
-
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Entity
@@ -24,8 +23,9 @@ public class User{
     @Column (nullable = false)
     private String username;
 
-    @JsonIgnore
     @Column (nullable = false)
     private String password;
+
+
 
 }

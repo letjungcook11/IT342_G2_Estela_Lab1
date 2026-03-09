@@ -1,0 +1,101 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.orb1 {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,109,250,0.18) 0%, transparent 70%);
+  top: -100px; left: -120px;
+  pointer-events: none;
+  animation: drift1 8s ease-in-out infinite alternate;
+}
+
+.orb2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%);
+  bottom: -80px; right: -80px;
+  pointer-events: none;
+  animation: drift2 10s ease-in-out infinite alternate;
+}
+
+@keyframes drift1 { to { transform: translate(40px, 40px); } }
+@keyframes drift2 { to { transform: translate(-30px, -30px); } }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow), var(--glow);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.brandMark { color: var(--accent); font-size: 1.4rem; }
+.brandName { color: var(--text); }
+
+.heading { display: flex; flex-direction: column; gap: 4px; }
+
+.title {
+  font-family: var(--font-head);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sub { color: var(--muted); font-size: 0.92rem; }
+
+.errorBanner {
+  background: rgba(248,113,113,0.1);
+  border: 1px solid rgba(248,113,113,0.25);
+  color: var(--danger);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+}
+
+.fields { display: flex; flex-direction: column; gap: 16px; }
+
+.footer {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.footerLink {
+  color: var(--accent2);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footerLink:hover { color: var(--text); }

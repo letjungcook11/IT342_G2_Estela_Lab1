@@ -1,5 +1,5 @@
-import { useAuth } from '../hooks/useAuth';
 import Button from '../components/ui/Button';
+import { useAuth } from '../hooks/useAuth';
 import styles from './ProfilePage.module.css';
 
 export default function ProfilePage() {

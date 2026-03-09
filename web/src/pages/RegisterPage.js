@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { register } from '../services/authService';
-import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
+import Input from '../components/ui/Input';
+import { register } from '../services/api';
 import styles from './RegisterPage.module.css';
 
 export default function RegisterPage() {

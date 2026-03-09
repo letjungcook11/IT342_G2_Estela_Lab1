@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { login } from '../services/authService';
-import Input from '../components/ui/Input';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
+import Input from '../components/ui/Input';
+import { login } from '../services/api';
 import styles from './LoginPage.module.css';
 
 export default function LoginPage() {

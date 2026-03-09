@@ -1,4 +1,4 @@
-import styles from './ServicesPage.module.css';
+import styles from './ServicePage.module.css';
 
 export default function ServicesPage() {
   return (

@@ -3,7 +3,7 @@ import LoginPage      from './pages/LoginPage';
 import RegisterPage   from './pages/RegisterPage';
 import DashboardPage  from './pages/DashboardPage';
 import HomePage       from './pages/HomePage';
-import ServicesPage   from './pages/ServicesPage';
+import ServicesPage   from './pages/ServicePage';
 import ProfilePage    from './pages/ProfilePage';
 import './styles/globals.css';
 

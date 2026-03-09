@@ -3,42 +3,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  background: var(--cream);
+  padding: 40px 24px;
   position: relative;
   overflow: hidden;
 }
 
-.orb1 {
+/* Decorative corner accent */
+.page::before {
+  content: '';
   position: absolute;
-  width: 450px; height: 450px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(167,139,250,0.15) 0%, transparent 70%);
-  top: -80px; right: -100px;
+  top: 0; right: 0;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle at top right, rgba(123,28,46,0.08), transparent 70%);
   pointer-events: none;
-  animation: drift1 9s ease-in-out infinite alternate;
 }
 
-.orb2 {
+.page::after {
+  content: '';
   position: absolute;
-  width: 380px; height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,109,250,0.12) 0%, transparent 70%);
-  bottom: -60px; left: -80px;
+  bottom: 0; left: 0;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle at bottom left, rgba(245,217,122,0.12), transparent 70%);
   pointer-events: none;
-  animation: drift2 11s ease-in-out infinite alternate;
 }
-
-@keyframes drift1 { to { transform: translate(-40px, 30px); } }
-@keyframes drift2 { to { transform: translate(30px, -40px); } }
 
 .card {
-  background: var(--surface);
+  background: var(--white);
   border: 1px solid var(--border2);
-  border-radius: 20px;
+  border-top: 4px solid var(--maroon);
+  border-radius: var(--radius);
   padding: 44px 40px;
   width: 100%;
-  max-width: 440px;
-  box-shadow: var(--shadow), var(--glow);
+  max-width: 460px;
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -48,41 +46,95 @@
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Gold top stripe accent */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: 40px;
+  width: 60px; height: 4px;
+  background: var(--gold);
+  border-radius: 0 0 3px 3px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+.brandCircle {
+  width: 40px; height: 40px;
+  background: var(--maroon);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-head);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.1rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.brandText {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--maroon-deep);
+  line-height: 1.2;
+}
+
+.brandSub {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 400;
   letter-spacing: 0.04em;
 }
 
-.brandMark { color: var(--accent); font-size: 1.4rem; }
-.brandName { color: var(--text); }
-
 .heading { display: flex; flex-direction: column; gap: 4px; }
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--maroon);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+}
 
 .title {
   font-family: var(--font-head);
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--maroon-deep);
 }
 
-.sub { color: var(--muted); font-size: 0.92rem; }
+.sub { color: var(--muted); font-size: 0.88rem; font-style: italic; }
 
 .errorBanner {
-  background: rgba(248,113,113,0.1);
-  border: 1px solid rgba(248,113,113,0.25);
+  background: rgba(192,57,43,0.06);
+  border-left: 3px solid var(--danger);
   color: var(--danger);
   padding: 10px 14px;
-  border-radius: var(--radius-sm);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
   font-size: 0.88rem;
+  font-style: italic;
 }
 
 .fields { display: flex; flex-direction: column; gap: 14px; }
@@ -91,11 +143,15 @@
   text-align: center;
   font-size: 0.88rem;
   color: var(--muted);
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
 }
 
 .footerLink {
-  color: var(--accent2);
-  font-weight: 500;
+  color: var(--maroon);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color 0.2s;
 }
-.footerLink:hover { color: var(--text); }
+.footerLink:hover { color: var(--maroon-soft); }

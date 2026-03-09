@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background: var(--cream);
 }
 
 .main {
@@ -10,5 +10,5 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 40px 28px;
 }

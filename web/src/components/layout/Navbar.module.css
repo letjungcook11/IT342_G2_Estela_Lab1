@@ -2,17 +2,16 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10,10,15,0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  background: var(--maroon);
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 2px 16px rgba(61,12,24,0.3);
 }
 
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-  height: 60px;
+  padding: 0 28px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,39 +20,51 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.04em;
-  color: var(--text);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--gold-light);
   text-decoration: none;
 }
 
 .logoMark {
-  color: var(--accent);
-  font-size: 1.3rem;
-}
-
-.nav {
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--maroon-deep);
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
+.nav { display: flex; align-items: center; gap: 2px; }
+
 .link {
-  padding: 6px 16px;
-  border-radius: var(--radius-sm);
+  padding: 8px 18px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-body);
   font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--muted);
-  transition: color 0.2s, background 0.2s;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(253,246,216,0.75);
+  transition: all 0.2s;
   text-decoration: none;
 }
 
-.link:hover { color: var(--text); background: var(--surface2); }
+.link:hover {
+  color: var(--gold);
+  background: rgba(245,217,122,0.1);
+}
 
 .active {
-  color: var(--accent2) !important;
-  background: rgba(124,109,250,0.1) !important;
+  color: var(--maroon-deep) !important;
+  background: var(--gold) !important;
 }

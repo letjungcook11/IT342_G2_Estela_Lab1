@@ -1,0 +1,60 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: var(--radius-xs);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border: none;
+    transition: all 0.22s ease;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  
+  .primary {
+    background: var(--maroon);
+    color: var(--gold-light);
+    border: 2px solid var(--maroon-dark);
+  }
+  .primary:hover:not(:disabled) {
+    background: var(--maroon-dark);
+    color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(123,28,46,0.35);
+  }
+  
+  .ghost {
+    background: transparent;
+    color: var(--maroon);
+    border: 2px solid var(--border2);
+  }
+  .ghost:hover:not(:disabled) {
+    background: var(--cream2);
+    border-color: var(--maroon);
+  }
+  
+  .danger {
+    background: rgba(192,57,43,0.08);
+    color: var(--danger);
+    border: 1.5px solid rgba(192,57,43,0.25);
+  }
+  .danger:hover:not(:disabled) {
+    background: rgba(192,57,43,0.15);
+  }
+  
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(245,217,122,0.3);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes spin { to { transform: rotate(360deg); } }

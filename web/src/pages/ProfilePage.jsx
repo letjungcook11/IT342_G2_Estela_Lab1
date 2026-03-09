@@ -18,15 +18,18 @@ export default function ProfilePage() {
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
-        <span className={styles.badge}>Profile</span>
-        <h1 className={styles.title}>Your Account</h1>
+        <span className={styles.eyebrow}>My Account</span>
+        <h1 className={styles.title}>Profile</h1>
       </div>
 
       <div className={styles.card}>
-        {/* Avatar */}
-        <div className={styles.avatarWrap}>
+        {/* Avatar row */}
+        <div className={styles.avatarRow}>
           <div className={styles.avatar}>{initial}</div>
-          <div className={styles.avatarGlow} />
+          <div className={styles.avatarInfo}>
+            <span className={styles.avatarName}>{user?.username || 'User'}</span>
+            <span className={styles.avatarEmail}>{user?.email || '—'}</span>
+          </div>
         </div>
 
         {/* Details */}
@@ -49,7 +52,6 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Logout */}
         <div className={styles.actions}>
           <Button variant="danger" onClick={logout}>
             Sign Out

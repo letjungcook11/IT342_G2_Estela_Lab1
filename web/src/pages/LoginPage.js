@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Button from '../components/ui/Button';
-import Input from '../components/ui/Input';
 import { login } from '../services/api';
 import styles from './LoginPage.module.css';
 
@@ -10,84 +8,94 @@ export default function LoginPage() {
   const location  = useLocation();
   const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const pre    = params.get('email');
-    if (pre) setEmail(pre);
-  }, [location.search]);
   const [error, setError]       = useState('');
   const [loading, setLoading]   = useState(false);
 
-  const handleLogin = async () => {
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const pre = params.get('email');
+    if (pre) setEmail(pre);
+  }, [location.search]);
+
+  const handle = async () => {
     if (!email || !password) { setError('Please fill in all fields.'); return; }
-    setError('');
-    setLoading(true);
+    setError(''); setLoading(true);
     try {
       const res = await login(email, password);
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
     } catch (err) {
-      setError(
-        err.response?.status === 401
-          ? 'Invalid email or password.'
-          : 'Something went wrong. Please try again.'
-      );
-    } finally {
-      setLoading(false);
-    }
+      setError(err.response?.status === 401
+        ? 'Invalid email or password.'
+        : 'Something went wrong. Try again.');
+    } finally { setLoading(false); }
   };
 
-  const handleKeyDown = (e) => { if (e.key === 'Enter') handleLogin(); };
+  const onKey = (e) => { if (e.key === 'Enter') handle(); };
 
   return (
     <div className={styles.page}>
-      {/* Background orbs */}
-      <div className={styles.orb1} />
-      <div className={styles.orb2} />
-
-      <div className={styles.card}>
-        <div className={styles.brand}>
-          <span className={styles.brandMark}>⬡</span>
-          <span className={styles.brandName}>Nexus</span>
+      <div className={styles.left}>
+        <div className={styles.leftInner}>
+          <div className={styles.logoMark}>T</div>
+          <h1 className={styles.brand}>TeknoyFix</h1>
+          <p className={styles.tagline}>Campus maintenance, simplified.</p>
+          <div className={styles.features}>
+            {['Report broken items instantly',
+              'Track repair status in real-time',
+              'Full fix history for the campus'].map(f => (
+              <div key={f} className={styles.feature}>
+                <span className={styles.featureDot} />
+                <span>{f}</span>
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
 
-        <div className={styles.heading}>
-          <h1 className={styles.title}>Welcome back</h1>
-          <p className={styles.sub}>Sign in to continue</p>
+      <div className={styles.right}>
+        <div className={styles.card}>
+          <div className={styles.heading}>
+            <h2 className={styles.title}>Welcome back</h2>
+            <p className={styles.sub}>Sign in to your account</p>
+          </div>
+
+          {error && <div className={styles.errorBanner}>{error}</div>}
+
+          <div className={styles.fields}>
+            <div className={styles.field}>
+              <label className={styles.label}>Email address</label>
+              <input
+                className={styles.input}
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                onKeyDown={onKey}
+              />
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>Password</label>
+              <input
+                className={styles.input}
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                onKeyDown={onKey}
+              />
+            </div>
+          </div>
+
+          <button className={styles.btn} onClick={handle} disabled={loading}>
+            {loading ? <span className={styles.spinner} /> : 'Sign In'}
+          </button>
+
+          <p className={styles.footer}>
+            Don't have an account?{' '}
+            <Link to="/register" className={styles.footerLink}>Register here</Link>
+          </p>
         </div>
-
-        {error && <div className={styles.errorBanner}>{error}</div>}
-
-        <div className={styles.fields}>
-          <Input
-            label="Email"
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            onKeyDown={handleKeyDown}
-            icon="✉"
-          />
-          <Input
-            label="Password"
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            onKeyDown={handleKeyDown}
-            icon="🔒"
-          />
-        </div>
-
-        <Button onClick={handleLogin} loading={loading}>
-          Sign In
-        </Button>
-
-        <p className={styles.footer}>
-          Don't have an account?{' '}
-          <Link to="/register" className={styles.footerLink}>Create one</Link>
-        </p>
       </div>
     </div>
   );

@@ -1,109 +1,109 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../components/ui/Button';
-import Input from '../components/ui/Input';
 import { register } from '../services/api';
-import styles from './RegisterPage.module.css';
+import styles from './LoginPage.module.css';
+import rStyles from './RegisterPage.module.css';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const [form, setForm]     = useState({ username: '', email: '', password: '', confirm: '' });
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [form, setForm]       = useState({ username:'', email:'', password:'', confirm:'', role:'STUDENT' });
+  const [errors, setErrors]   = useState({});
   const [apiError, setApiError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const set = (field) => (e) => setForm(f => ({ ...f, [field]: e.target.value }));
+  const set = f => e => setForm(p => ({ ...p, [f]: e.target.value }));
 
   const validate = () => {
     const e = {};
-    if (!form.username.trim())            e.username = 'Username is required.';
-    if (!/\S+@\S+\.\S+/.test(form.email)) e.email    = 'Enter a valid email.';
-    if (form.password.length < 6)         e.password = 'At least 6 characters.';
+    if (!form.username.trim())             e.username = 'Required.';
+    if (!/\S+@\S+\.\S+/.test(form.email)) e.email    = 'Valid email required.';
+    if (form.password.length < 6)         e.password = 'Min 6 characters.';
     if (form.password !== form.confirm)   e.confirm  = 'Passwords do not match.';
     return e;
   };
 
-  const handleRegister = async () => {
-    const e = validate();
-    setErrors(e);
+  const handle = async () => {
+    const e = validate(); setErrors(e);
     if (Object.keys(e).length) return;
-    setApiError('');
-    setLoading(true);
+    setApiError(''); setLoading(true);
     try {
-      await register(form.username, form.email, form.password);
-      // Pre-fill login page via query params
+      await register(form.username, form.email, form.password, form.role);
       navigate(`/?email=${encodeURIComponent(form.email)}`);
     } catch (err) {
-      setApiError(err.response?.data || 'Registration failed. Try again.');
-    } finally {
-      setLoading(false);
-    }
+      setApiError(err.response?.data || 'Registration failed.');
+    } finally { setLoading(false); }
   };
 
   return (
     <div className={styles.page}>
-      <div className={styles.orb1} />
-      <div className={styles.orb2} />
-
-      <div className={styles.card}>
-        <div className={styles.brand}>
-          <span className={styles.brandMark}>⬡</span>
-          <span className={styles.brandName}>Nexus</span>
+      <div className={styles.left}>
+        <div className={styles.leftInner}>
+          <div className={styles.logoMark}>T</div>
+          <h1 className={styles.brand}>TeknoyFix</h1>
+          <p className={styles.tagline}>Join the campus maintenance network.</p>
+          <div className={styles.features}>
+            {['Submit reports with photos',
+              'Get notified on repairs',
+              'View campus fix history'].map(f => (
+              <div key={f} className={styles.feature}>
+                <span className={styles.featureDot} /><span>{f}</span>
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
 
-        <div className={styles.heading}>
-          <h1 className={styles.title}>Create account</h1>
-          <p className={styles.sub}>Join us today, it's free</p>
+      <div className={styles.right}>
+        <div className={styles.card}>
+          <div className={styles.heading}>
+            <h2 className={styles.title}>Create account</h2>
+            <p className={styles.sub}>It's free and takes a minute</p>
+          </div>
+
+          {apiError && <div className={styles.errorBanner}>{apiError}</div>}
+
+          <div className={styles.fields}>
+            {[
+              { label:'Username',         field:'username', type:'text',     ph:'johndoe' },
+              { label:'Email address',    field:'email',    type:'email',    ph:'you@cit.edu' },
+              { label:'Password',         field:'password', type:'password', ph:'Min. 6 characters' },
+              { label:'Confirm password', field:'confirm',  type:'password', ph:'Repeat password' },
+            ].map(({ label, field, type, ph }) => (
+              <div key={field} className={styles.field}>
+                <label className={styles.label}>{label}</label>
+                <input
+                  className={`${styles.input} ${errors[field] ? rStyles.inputError : ''}`}
+                  type={type}
+                  placeholder={ph}
+                  value={form[field]}
+                  onChange={set(field)}
+                />
+                {errors[field] && <span className={rStyles.err}>{errors[field]}</span>}
+              </div>
+            ))}
+
+            <div className={styles.field}>
+              <label className={styles.label}>I am a</label>
+              <select
+                className={styles.input}
+                value={form.role}
+                onChange={set('role')}
+              >
+                <option value="STUDENT">Student</option>
+                <option value="EMPLOYEE">Employee / Staff</option>
+              </select>
+            </div>
+          </div>
+
+          <button className={styles.btn} onClick={handle} disabled={loading}>
+            {loading ? <span className={styles.spinner} /> : 'Create Account'}
+          </button>
+
+          <p className={styles.footer}>
+            Already have an account?{' '}
+            <Link to="/" className={styles.footerLink}>Sign in</Link>
+          </p>
         </div>
-
-        {apiError && <div className={styles.errorBanner}>{apiError}</div>}
-
-        <div className={styles.fields}>
-          <Input
-            label="Username"
-            placeholder="johndoe"
-            value={form.username}
-            onChange={set('username')}
-            error={errors.username}
-            icon="👤"
-          />
-          <Input
-            label="Email"
-            type="email"
-            placeholder="you@example.com"
-            value={form.email}
-            onChange={set('email')}
-            error={errors.email}
-            icon="✉"
-          />
-          <Input
-            label="Password"
-            type="password"
-            placeholder="Min. 6 characters"
-            value={form.password}
-            onChange={set('password')}
-            error={errors.password}
-            icon="🔒"
-          />
-          <Input
-            label="Confirm Password"
-            type="password"
-            placeholder="Repeat password"
-            value={form.confirm}
-            onChange={set('confirm')}
-            error={errors.confirm}
-            icon="🔒"
-          />
-        </div>
-
-        <Button onClick={handleRegister} loading={loading}>
-          Create Account
-        </Button>
-
-        <p className={styles.footer}>
-          Already have an account?{' '}
-          <Link to="/" className={styles.footerLink}>Sign in</Link>
-        </p>
       </div>
     </div>
   );

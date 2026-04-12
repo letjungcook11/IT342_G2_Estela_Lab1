@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage      from './pages/LoginPage';
-import RegisterPage   from './pages/RegisterPage';
-import DashboardPage  from './pages/DashboardPage';
-import HomePage       from './pages/HomePage';
-import ServicesPage   from './pages/ServicePage';
-import ProfilePage    from './pages/ProfilePage';
-import './styles/globals.css';
+import { useAuth } from './hooks/useAuth';
+import LoginPage     from './pages/LoginPage';
+import RegisterPage  from './pages/RegisterPage';
+import DashboardPage from './pages/DashboardPage';
+import HomePage      from './pages/HomePage';
+import ReportsPage   from './pages/ReportsPage';
+import HistoryPage   from './pages/HistoryPage';
+import ProfilePage   from './pages/ProfilePage';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token');
@@ -18,21 +19,15 @@ export default function App() {
       <Routes>
         <Route path="/"         element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-
         <Route
           path="/dashboard"
-          element={
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute><DashboardPage /></PrivateRoute>}
         >
-          <Route index                element={<HomePage />} />
-          <Route path="services"      element={<ServicesPage />} />
-          <Route path="profile"       element={<ProfilePage />} />
+          <Route index               element={<HomePage />} />
+          <Route path="reports"      element={<ReportsPage />} />
+          <Route path="history"      element={<HistoryPage />} />
+          <Route path="profile"      element={<ProfilePage />} />
         </Route>
-
-        {/* Catch-all */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

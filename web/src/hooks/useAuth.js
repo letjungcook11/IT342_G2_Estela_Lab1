@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { getMe } from '../services/api';
 
-export function useAuth() {
+const AuthContext = createContext(null);
+
+export function AuthProvider({ children }) {
   const [user, setUser]       = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -20,5 +22,15 @@ export function useAuth() {
     window.location.href = '/';
   };
 
-  return { user, loading, logout };
+  const refresh = () => getMe().then(res => setUser(res.data));
+
+  return (
+    <AuthContext.Provider value={{ user, loading, logout, refresh, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
 }

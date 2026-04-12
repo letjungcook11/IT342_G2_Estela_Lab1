@@ -1,14 +1,15 @@
 import styles from './Input.module.css';
 
-export default function Input({ label, icon, error, ...props }) {
+export default function Input({ label, error, hint, ...props }) {
   return (
     <div className={styles.wrapper}>
       {label && <label className={styles.label}>{label}</label>}
-      <div className={`${styles.inputWrap} ${error ? styles.hasError : ''}`}>
-        {icon && <span className={styles.icon}>{icon}</span>}
-        <input className={styles.input} {...props} />
-      </div>
+      <input
+        className={`${styles.input} ${error ? styles.hasError : ''}`}
+        {...props}
+      />
       {error && <span className={styles.error}>{error}</span>}
+      {hint && !error && <span className={styles.hint}>{hint}</span>}
     </div>
   );
 }

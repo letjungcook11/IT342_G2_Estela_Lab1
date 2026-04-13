@@ -32,6 +32,6 @@ export const getHistory     = ()       => API.get('/api/reports/history');
 export const getReportHistory = (id)   => API.get(`/api/reports/${id}/history`);
 
 // Users (for employee assignment dropdown)
-export const getUsers = () => API.get('/api/users');
+export const getUsers = () => API.get('/api/user/all');
 
 export default API;

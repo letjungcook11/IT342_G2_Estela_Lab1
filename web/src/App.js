@@ -6,6 +6,7 @@ import DashboardPage from './pages/DashboardPage';
 import HomePage      from './pages/HomePage';
 import ReportsPage   from './pages/ReportsPage';
 import HistoryPage   from './pages/HistoryPage';
+import OAuth2CallbackPage from './pages/OAuth2CallbackPage';
 import ProfilePage   from './pages/ProfilePage';
 
 function PrivateRoute({ children }) {
@@ -19,6 +20,8 @@ export default function App() {
       <Routes>
         <Route path="/"         element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/oauth2/callback" element={<OAuth2CallbackPage />} />
+
         <Route
           path="/dashboard"
           element={<PrivateRoute><DashboardPage /></PrivateRoute>}

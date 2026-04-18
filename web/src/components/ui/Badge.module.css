@@ -1,0 +1,22 @@
+/* Badge.module.css */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.default  { background: var(--surface2);    color: var(--text-2); }
+.pending  { background: var(--amber-faint); color: var(--amber);  }
+.assigned { background: var(--blue-faint);  color: var(--blue);   }
+.inprogress { background: #f0f9ff;          color: #0369a1;       }
+.completed  { background: var(--green-faint); color: var(--green); }
+.urgent   { background: var(--red-faint);   color: var(--red);    }
+.high     { background: #fff7ed;            color: #c2410c;       }
+.medium   { background: var(--amber-faint); color: var(--amber);  }
+.low      { background: var(--surface2);    color: var(--text-2); }
+.student  { background: var(--blue-faint);  color: var(--blue);   }
+.employee { background: var(--maroon-faint); color: var(--maroon); }

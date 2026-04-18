@@ -1,0 +1,12 @@
+/* DashboardPage.module.css */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  padding: 32px;
+  max-width: 100%;
+  overflow-x: hidden;
+}

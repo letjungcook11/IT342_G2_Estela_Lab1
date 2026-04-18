@@ -1,0 +1,112 @@
+/* ProfilePage.module.css */
+.page   { display: flex; flex-direction: column; gap: 24px; }
+.header { }
+.title  { font-size: 22px; font-weight: 700; }
+.sub    { font-size: 14px; color: var(--text-3); margin-top: 4px; }
+
+.body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.avatarCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.avatarWrap { position: relative; margin-bottom: 4px; }
+.avatarImg {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--maroon-border);
+}
+.avatarInitial {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--maroon);
+  color: #fff;
+  font-size: 32px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatarEdit {
+  position: absolute;
+  bottom: 2px; right: 2px;
+  width: 26px; height: 26px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition);
+}
+.avatarEdit:hover { background: var(--maroon-faint); }
+.avatarName  { font-size: 16px; font-weight: 600; color: var(--text); }
+.avatarEmail { font-size: 13px; color: var(--text-3); }
+
+.infoCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.infoTitle   { font-size: 15px; font-weight: 600; }
+.editActions { display: flex; gap: 8px; }
+
+.fields { padding: 4px 0; }
+.fieldRow {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+.fieldRow:last-child { border-bottom: none; }
+.fieldLabel {
+  width: 130px;
+  font-size: 13px;
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+.fieldValue { font-size: 14px; color: var(--text); }
+.fieldInput {
+  flex: 1;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+.fieldInput:focus { border-color: var(--maroon); }
+.empty { color: var(--text-3); }
+
+.center  { display: flex; align-items: center; justify-content: center; height: 200px; }
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--maroon);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 700px) {
+  .body { grid-template-columns: 1fr; }
+}

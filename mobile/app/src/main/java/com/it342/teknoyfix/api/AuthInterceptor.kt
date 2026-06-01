@@ -14,7 +14,7 @@ class AuthInterceptor(private val tokenManager: TokenManager) : Interceptor {
                     addHeader("Authorization", "Bearer $token")
                 }
             }
-            .build()
+            .build()a
         return chain.proceed(request)
     }
 }

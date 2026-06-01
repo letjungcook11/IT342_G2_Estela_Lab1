@@ -68,3 +68,12 @@
   outline: none;
 }
 .empty { text-align: center; padding: 60px 20px; color: var(--text-3); font-size: 14px; }
+
+.completedTag {
+  font-size: 13px;
+  color: var(--green);
+  font-weight: 600;
+  padding: 6px 12px;
+  background: var(--green-faint);
+  border-radius: 99px;
+}

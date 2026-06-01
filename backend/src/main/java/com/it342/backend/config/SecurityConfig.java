@@ -35,7 +35,7 @@ public class SecurityConfig {
 
     public SecurityConfig(CustomUserDetailsService userDetailsService, JwtFilter jwtFilter) {
         this.userDetailsService = userDetailsService;
-        this.jwtFilter = jwtFilter;a
+        this.jwtFilter = jwtFilter;
     }
 
     @Bean

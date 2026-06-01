@@ -100,7 +100,7 @@ export default function LoginPage() {
           </div>
 
 
-            href="http://localhost:8080/oauth2/authorization/google"
+          <a href="http://localhost:8080/oauth2/authorization/google"
             className={styles.googleBtn}
           >
             <svg width="18" height="18" viewBox="0 0 48 48">

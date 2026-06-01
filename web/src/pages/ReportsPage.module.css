@@ -1,0 +1,70 @@
+/* ReportsPage.module.css */
+.page  { display: flex; flex-direction: column; gap: 24px; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; }
+.title  { font-size: 22px; font-weight: 700; }
+.sub    { font-size: 14px; color: var(--text-3); margin-top: 4px; }
+
+.formCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.formTitle { font-size: 15px; font-weight: 600; margin-bottom: 18px; }
+.formGrid  { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.span2     { grid-column: span 2; }
+.field     { display: flex; flex-direction: column; gap: 5px; }
+.label     { font-size: 13px; font-weight: 500; color: var(--text-2); }
+.input, .textarea {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition);
+  width: 100%;
+}
+.input:focus, .textarea:focus { border-color: var(--maroon); }
+.textarea { resize: vertical; }
+.formActions { display: flex; gap: 10px; margin-top: 18px; }
+
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-size: 13px;
+  background: var(--surface);
+  color: var(--text-2);
+  transition: all var(--transition);
+}
+.filter:hover { border-color: var(--maroon); color: var(--maroon); }
+.filterActive { background: var(--maroon); border-color: var(--maroon); color: #fff; }
+
+.list { display: flex; flex-direction: column; gap: 12px; }
+.reportCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  transition: border-color var(--transition);
+}
+.reportCard:hover { border-color: var(--maroon-border); }
+.reportTop { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.reportTitle { font-size: 15px; font-weight: 600; color: var(--text); }
+.reportMeta  { font-size: 12px; color: var(--text-3); margin-top: 3px; }
+.badges { display: flex; gap: 6px; flex-shrink: 0; }
+.reportDesc { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+.actions { display: flex; gap: 10px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.assignSelect {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+.empty { text-align: center; padding: 60px 20px; color: var(--text-3); font-size: 14px; }

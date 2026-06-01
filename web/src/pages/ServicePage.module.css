@@ -1,0 +1,36 @@
+.page { display: flex; flex-direction: column; gap: 40px; }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(124,109,250,0.12);
+  color: var(--accent2);
+  border: 1px solid rgba(124,109,250,0.25);
+  border-radius: 99px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.title {
+  font-family: var(--font-head);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.sub { color: var(--muted); font-size: 1rem; }
